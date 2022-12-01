@@ -50,5 +50,16 @@ namespace pet_hotel.Controllers
 
         //     return new List<Pet>{ newPet1, newPet2};
         // }
+         [HttpPut("{id}")]
+        public Pet PUT(int id, Pet pet)
+        {
+        pet.id = id;
+
+            _context.Update(pet);
+
+            _context.SaveChanges();
+
+            return pet;
+        }
     }
 }
