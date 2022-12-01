@@ -24,6 +24,16 @@ namespace pet_hotel.Controllers
             return _context.PetOwners;
         }
 
+        //POST for new owners
+          [HttpPost]
+        public PetOwner Post(PetOwner petowner) {
+            _context.Add(petowner);
+            _context.SaveChanges();
+
+            return petowner;
+        }
+
+        
 
         [HttpPut("{id}")]
         public PetOwner Put(int id, PetOwner petowner)
