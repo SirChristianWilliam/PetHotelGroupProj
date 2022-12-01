@@ -24,6 +24,17 @@ namespace pet_hotel.Controllers
             return _context.PetOwners;
         }
 
+
+        [HttpPut("{id}")]
+        public PetOwner Put(int id, PetOwner petowner)
+        {
+            petowner.id = id;
+            _context.Update(petowner);
+            _context.SaveChanges();
+            return petowner;
+        }
+        
+
         // GET /api/petowners/:id
         // Returns the pet owner with the given id
         [HttpGet("{id}")]
@@ -37,5 +48,6 @@ namespace pet_hotel.Controllers
 
             return petowner;
         }   
+
     }
 }
