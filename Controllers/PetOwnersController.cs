@@ -23,5 +23,15 @@ namespace pet_hotel.Controllers
             // return new List<PetOwner>();
             return _context.PetOwners;
         }
+
+        [HttpPut("{id}")]
+        public PetOwner Put(int id, PetOwner petowner)
+        {
+            petowner.id = id;
+            _context.Update(petowner);
+            _context.SaveChanges();
+            return petowner;
+        }
+        
     }
 }
