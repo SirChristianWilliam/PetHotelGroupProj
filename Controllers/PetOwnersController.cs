@@ -34,5 +34,30 @@ namespace pet_hotel.Controllers
         }
 
         
+
+        [HttpPut("{id}")]
+        public PetOwner Put(int id, PetOwner petowner)
+        {
+            petowner.id = id;
+            _context.Update(petowner);
+            _context.SaveChanges();
+            return petowner;
+        }
+        
+
+        // GET /api/petowners/:id
+        // Returns the pet owner with the given id
+        [HttpGet("{id}")]
+        public ActionResult<PetOwner> GetById(int id) {
+            PetOwner petowner = _context.PetOwners
+                .SingleOrDefault(petowner => petowner.id == id);
+
+            if (petowner is null) {
+                return NotFound();
+            }
+
+            return petowner;
+        }   
+
     }
 }
