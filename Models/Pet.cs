@@ -37,12 +37,12 @@ namespace pet_hotel
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public PetColorType color {get; set;}
 
-        public bool checkedin {get; set;}
+        public DateTime checkedinAt {get; set;}
 
-        [ForeignKey("ownedby")]
-        public int ownedbyId {get; set;}
+        [ForeignKey("petOwner")]
+        public int petOwnerid {get; set;}
 
-        public PetOwner ownedby {get; set;}
+        public PetOwner petOwner {get; set;}
 
 
     }

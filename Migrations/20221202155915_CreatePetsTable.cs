@@ -1,10 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace dotnet_bakery.Migrations
+#nullable disable
+
+namespace dotnetbakery.Migrations
 {
+    /// <inheritdoc />
     public partial class CreatePetsTable : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -16,26 +21,27 @@ namespace dotnet_bakery.Migrations
                     name = table.Column<string>(type: "text", nullable: true),
                     breed = table.Column<int>(type: "integer", nullable: false),
                     color = table.Column<int>(type: "integer", nullable: false),
-                    checkedin = table.Column<bool>(type: "boolean", nullable: false),
-                    ownedbyId = table.Column<int>(type: "integer", nullable: false)
+                    checkedinAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    petOwnerid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pets", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Pets_PetOwners_ownedbyId",
-                        column: x => x.ownedbyId,
+                        name: "FK_Pets_PetOwners_petOwnerid",
+                        column: x => x.petOwnerid,
                         principalTable: "PetOwners",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_ownedbyId",
+                name: "IX_Pets_petOwnerid",
                 table: "Pets",
-                column: "ownedbyId");
+                column: "petOwnerid");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
