@@ -24,7 +24,8 @@ namespace pet_hotel.Controllers
         [HttpGet]
         public IEnumerable<Pet> GetPets() {
             // return new List<Pet>();
-            return _context.Pets;
+            return _context.Pets
+            .Include(pet => pet.petOwner);
         }
 
         // [HttpGet]
@@ -50,7 +51,21 @@ namespace pet_hotel.Controllers
 
         //     return new List<Pet>{ newPet1, newPet2};
         // }
-         [HttpPut("{id}")]
+
+        // POST /api/pets
+        // Add new pet
+        [HttpPost]
+        public Pet Post(Pet pet)
+        {
+            _context.Add(pet);
+            _context.SaveChanges();
+
+            return pet;
+        }
+        
+        // PUT /api/pets
+        // Update pets
+        [HttpPut("{id}")]
         public Pet PUT(int id, Pet pet)
         {
             pet.id = id;
