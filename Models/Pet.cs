@@ -6,7 +6,7 @@ using System;
 namespace pet_hotel
 {
     public enum PetBreedType {
-        Shephard,
+        Shepherd,
         Poodle,
         Beagle,
         Bulldog,
