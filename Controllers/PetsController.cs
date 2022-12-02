@@ -53,7 +53,7 @@ namespace pet_hotel.Controllers
          [HttpPut("{id}")]
         public Pet PUT(int id, Pet pet)
         {
-        pet.id = id;
+            pet.id = id;
 
             _context.Update(pet);
 
