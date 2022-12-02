@@ -81,35 +81,35 @@ namespace pet_hotel.Controllers
 
         // PUT /api/pets/:id/checkin
         // Checks in pet at current time
-        [HttpPut("{id}/checkin")]
-        public Pet CheckIn(int id, Pet pet)
-        {
-            pet.id = id;
+        // [HttpPut("{id}/checkin")]
+        // public Pet CheckIn(int id, Pet pet)
+        // {
+        //     pet.id = id;
 
-            pet.checkedinAt = (string.Format("{0:HH:mm:ss tt}", DateTime.Now));
+        //     pet.checkedinAt = (string.Format("{0:HH:mm:ss tt}", DateTime.Now));
 
-            _context.Update(pet);
+        //     _context.Update(pet);
 
-            _context.SaveChanges();
+        //     _context.SaveChanges();
 
-            return pet;
-        }
+        //     return pet;
+        // }
 
         // PUT /api/pets/:id/checkin
         // Checks out pet
-        [HttpPut("{id}/checkout")]
-        public Pet CheckOut(int id, Pet pet)
-        {
-            pet.id = id;
+        // [HttpPut("{id}/checkout")]
+        // public Pet CheckOut(int id, Pet pet)
+        // {
+        //     pet.id = id;
 
-            pet.checkedinAt = null;
+        //     pet.checkedinAt = null;
 
-            _context.Update(pet);
+        //     _context.Update(pet);
 
-            _context.SaveChanges();
+        //     _context.SaveChanges();
 
-            return pet;
-        }
+        //     return pet;
+        // }
 
            //Delete api/pets
              [HttpDelete("{id}")]
